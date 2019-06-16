@@ -16,6 +16,7 @@ import (
 	"github.com/containous/traefik/pkg/provider/marathon"
 	"github.com/containous/traefik/pkg/provider/rancher"
 	"github.com/containous/traefik/pkg/provider/rest"
+	"github.com/containous/traefik/pkg/provider/kv"
 	"github.com/containous/traefik/pkg/tls"
 	"github.com/containous/traefik/pkg/tracing/datadog"
 	"github.com/containous/traefik/pkg/tracing/instana"
@@ -128,6 +129,7 @@ type Providers struct {
 	KubernetesCRD             *crd.Provider      `description:"Enable Kubernetes backend with default settings" export:"true"`
 	Rest                      *rest.Provider     `description:"Enable Rest backend with default settings" export:"true"`
 	Rancher                   *rancher.Provider  `description:"Enable Rancher backend with default settings" export:"true"`
+	Kv						  *kv.Provider 	     `description:"Enable Kv backend with default settings" export:"true"`
 }
 
 // SetEffectiveConfiguration adds missing configuration parameters derived from existing ones.

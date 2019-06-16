@@ -3,6 +3,7 @@ package server
 import (
 	"context"
 	"encoding/json"
+	"fmt"
 	"net/http"
 	"os"
 	"os/signal"
@@ -84,6 +85,7 @@ func NewServer(staticConfiguration static.Configuration, provider provider.Provi
 	server.currentConfigurations.Set(currentConfigurations)
 	server.providerConfigUpdateMap = make(map[string]chan config.Message)
 	server.tlsManager = tlsManager
+	fmt.Println(server)
 
 	if staticConfiguration.Providers != nil {
 		server.providersThrottleDuration = time.Duration(staticConfiguration.Providers.ProvidersThrottleDuration)

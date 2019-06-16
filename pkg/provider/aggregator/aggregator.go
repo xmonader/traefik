@@ -9,7 +9,12 @@ import (
 	"github.com/containous/traefik/pkg/provider"
 	"github.com/containous/traefik/pkg/provider/file"
 	"github.com/containous/traefik/pkg/safe"
+	"github.com/abronan/valkeyrie/store/redis"
 )
+func init() {
+	redis.Register()
+
+}
 
 // ProviderAggregator aggregates providers.
 type ProviderAggregator struct {
@@ -46,6 +51,9 @@ func NewProviderAggregator(conf static.Providers) ProviderAggregator {
 	}
 	if conf.Rancher != nil {
 		p.quietAddProvider(conf.Rancher)
+	}
+	if conf.Kv != nil {
+		p.quietAddProvider(conf.Kv)
 	}
 
 	return p

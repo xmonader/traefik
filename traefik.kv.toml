@@ -1,0 +1,26 @@
+################################################################
+# Global configuration
+################################################################
+[global]
+  checkNewVersion = true
+  sendAnonymousUsage = true
+
+################################################################
+# Entrypoints configuration
+################################################################
+
+# Entrypoints definition
+#
+# Optional
+# Default:
+[entryPoints]
+    [entryPoints.tcp]
+    address = ":443"
+
+[kv]
+DbBackend = "redis"
+Username = "auser"
+Password = "apassword"
+Addr = "127.0.0.1"
+Port = 6379
+

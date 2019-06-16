@@ -13,6 +13,7 @@ import (
 	"github.com/containous/traefik/pkg/provider/marathon"
 	"github.com/containous/traefik/pkg/provider/rancher"
 	"github.com/containous/traefik/pkg/provider/rest"
+	"github.com/containous/traefik/pkg/provider/kv"
 	"github.com/containous/traefik/pkg/tracing/datadog"
 	"github.com/containous/traefik/pkg/tracing/instana"
 	"github.com/containous/traefik/pkg/tracing/jaeger"
@@ -182,8 +183,15 @@ func NewTraefikDefaultPointersConfiguration() *TraefikConfiguration {
 	defaultRancher.DefaultRule = rancher.DefaultTemplateRule
 	defaultRancher.Prefix = "latest"
 
+	var defaultKv  kv.Provider
+	defaultKv.DbBackend = "redis"
+	defaultKv.Addr = "127.0.0.1"
+	defaultKv.Port = 6379
+	defaultKv.PullTime = 10
+
 	defaultProviders := static.Providers{
 		File:       &defaultFile,
+		Kv:			&defaultKv,
 		Docker:     &defaultDocker,
 		Rest:       &defaultRest,
 		Marathon:   &defaultMarathon,

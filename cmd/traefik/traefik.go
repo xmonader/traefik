@@ -164,7 +164,7 @@ Complete documentation is available at https://traefik.io`,
 	}
 	storeConfigCmd.Run = storeconfig.Run(kv, traefikConfiguration)
 
-	// if a KV Store is enable and no sub-command called in args
+	// if a KV Store is enable and no sub-commanyd called in args
 	if kv != nil && usedCmd == traefikCmd {
 		s.AddSource(kv)
 		operation := func() error {
@@ -191,7 +191,8 @@ Complete documentation is available at https://traefik.io`,
 
 func runCmd(staticConfiguration *static.Configuration, configFile string) error {
 	configureLogging(staticConfiguration)
-
+	fmt.Println(staticConfiguration)
+	fmt.Println(configFile)
 	if len(configFile) > 0 {
 		log.WithoutContext().Infof("Using TOML configuration file %s", configFile)
 	}

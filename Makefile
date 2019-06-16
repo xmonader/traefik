@@ -155,4 +155,5 @@ fmt:
 run-dev:
 	go generate
 	go build ./cmd/traefik
-	./traefik
+    #sudo ./traefik -conf=traefik.kv.toml
+
